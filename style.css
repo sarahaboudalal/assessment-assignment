@@ -5,7 +5,9 @@
 
 #container {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: space-between;
 }
 
 td {
@@ -29,11 +31,11 @@ td img {
     align-items: center;
     position: relative;
     min-height: 500px;
-    min-width: 600px;
-    border: 1px solid rgb(131, 131, 131);
+    width: 49%;
+    border-radius: 5px;
     box-shadow: 0px 2px 20px 1px rgba(0,0,0,0.37);
--webkit-box-shadow: 0px 2px 20px 1px rgba(0,0,0,0.37);
--moz-box-shadow: 0px 2px 20px 1px rgba(0,0,0,0.37);
+    -webkit-box-shadow: 0px 2px 20px 1px rgba(0,0,0,0.37);
+    -moz-box-shadow: 0px 2px 20px 1px rgba(0,0,0,0.37);
 }
 
 #table-container section {
@@ -42,10 +44,46 @@ td img {
     margin: 10px;
 }
 
-#table-container section p {
+#table-container section h4 {
     display: inline;
     text-align: center;
     margin-left: 30px;
     margin-right: 30px;
     color: red;
+}
+
+#cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 49%;
+}
+
+.card-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 2px 20px 1px rgba(0,0,0,0.37);
+    -webkit-box-shadow: 0px 2px 20px 1px rgba(0,0,0,0.37);
+    -moz-box-shadow: 0px 2px 20px 1px rgba(0,0,0,0.37);
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgb(56, 185, 255) 50%, rgba(255,255,255,1) 100%);
+    border-radius: 10px ;
+    padding: 5px;
+    text-align: center;
+    margin: 3px;
+    max-width: 200px;
+    height: 200px;
+}
+.card-div:hover{
+    cursor: pointer;
+}
+
+#cards-container div:nth-of-type(1){
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgb(49, 49, 49) 50%, rgba(255,255,255,1) 100%);
+}
+
+.cloud-image {
+    width: 60%;
 }
