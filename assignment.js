@@ -29,12 +29,12 @@ const createCards = (product) => {
         cardDiv.appendChild(productPrice)
         cardsContainer.appendChild(cardDiv)
         cardDiv.addEventListener('click', function () {
-            handleOnClick(product) //adding products info to the table
+            handleProducts(product) 
         })
 }
 
 // checks if the product is already added to the table, if it is the function increases it's quantity, if it's not it adds it
-const handleOnClick = (product) => {
+const handleProducts = (product) => {
     let quantity = 1
     let total = parseInt(product.price) * parseInt(quantity)
     let totalPrice = 0.00
@@ -92,7 +92,7 @@ const totalPriceCalc = (table, totalPrice, totalPriceSection) => {
 }
 
 
-// to decrease the quantity of the products added or remove
+// to decrease the quantity of the products added or remove them from the table
 const decreaseQuantity = (e, product, totalPrice) => {
     const existingRow = document.getElementById(`${product.id}`)
     const quantityCell = existingRow.querySelector('.quantity')
