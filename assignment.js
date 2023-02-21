@@ -13,24 +13,24 @@ const getProducts = () => {
 const createCards = (product) => {
     const cardsContainer = document.getElementById('cards-container') 
     const cardDiv = document.createElement('div')
-                cardDiv.setAttribute('class', 'card-div')
-                cardDiv.setAttribute('name', `${product.id}`)
-                const cardImg = document.createElement('img')
-                const productInfo = document.createElement('p')
-                const productPrice = document.createElement('p')
-                cardImg.src = './assets/cloud-pos.png'
-                cardImg.setAttribute('class', 'cloud-image')
-                productInfo.innerHTML = `${product.product}`
-                productInfo.setAttribute('class', 'product-info')
-                productPrice.innerHTML = `$${product.price}`
-                productPrice.setAttribute = ('class', 'product-price')
-                cardDiv.appendChild(cardImg)
-                cardDiv.appendChild(productInfo)
-                cardDiv.appendChild(productPrice)
-                cardsContainer.appendChild(cardDiv)
-                cardDiv.addEventListener('click', function () {
-                        handleOnClick(product) //adding products info to the table
-                })
+        cardDiv.setAttribute('class', 'card-div')
+        cardDiv.setAttribute('name', `${product.id}`)
+        const cardImg = document.createElement('img')
+        const productInfo = document.createElement('p')
+        const productPrice = document.createElement('p')
+        cardImg.src = './assets/cloud-pos.png'
+        cardImg.setAttribute('class', 'cloud-image')
+        productInfo.innerHTML = `${product.product}`
+        productInfo.setAttribute('class', 'product-info')
+        productPrice.innerHTML = `$${product.price}`
+        productPrice.setAttribute = ('class', 'product-price')
+        cardDiv.appendChild(cardImg)
+        cardDiv.appendChild(productInfo)
+        cardDiv.appendChild(productPrice)
+        cardsContainer.appendChild(cardDiv)
+        cardDiv.addEventListener('click', function () {
+            handleOnClick(product) //adding products info to the table
+        })
 }
 
 // checks if the product is already added to the table, if it is the function increases it's quantity, if it's not it adds it
@@ -41,22 +41,23 @@ const handleOnClick = (product) => {
     const table = document.getElementById('table')
     const existingRow = document.getElementById(`${product.id}`)
     const totalPriceSection = document.getElementById('total')
-    if (existingRow) {                                              // increasing the quantity of the existing product without adding it again
-        const quantityCell = existingRow.querySelector('.quantity')
-        const totalCell = existingRow.querySelector('.total-price')
-        quantity = parseInt(quantityCell.innerHTML)
-        quantity++;
-        quantityCell.innerHTML = quantity                        //updating quantity
-        total = parseInt(product.price).toFixed(2) * quantity
-        totalCell.innerHTML = total.toFixed(2)                  //updating total price of single product
+    if (existingRow) {                                              
+        increaseQuantity(existingRow, quantity, total, product)
     } else {                                                   
         addProduct(table, product, quantity, total, totalPrice, totalPriceSection)
     }
-    // calculating total price of all products
-    for (i = 1; i < table.rows.length; i++){
-        totalPrice = totalPrice + parseInt(table.rows[i].cells[3].innerHTML)
-       }
-    totalPriceSection.innerHTML = totalPrice.toFixed(2)
+    totalPriceCalc(table, totalPrice,totalPriceSection)
+}
+
+// increasing the quantity of the existing product without adding it again
+const increaseQuantity = (existingRow, quantity, total, product) => {
+    const quantityCell = existingRow.querySelector('.quantity')
+    const totalCell = existingRow.querySelector('.total-price')
+    quantity = parseInt(quantityCell.innerHTML)
+    quantity++;
+    quantityCell.innerHTML = quantity                        //updating quantity
+    total = parseInt(product.price).toFixed(2) * quantity
+    totalCell.innerHTML = total.toFixed(2)                  //updating total price of single product
 }
 
 // adding a new row to the table 
@@ -80,6 +81,14 @@ const addProduct = (table, product, quantity, total, totalPrice, totalPriceSecti
             totalPrice = parseInt(totalPriceSection.innerHTML)
             decreaseQuantity(e, product, totalPrice)
         })
+}
+
+// calculating total price of all products
+const totalPriceCalc = (table, totalPrice, totalPriceSection) => {
+    for (i = 1; i < table.rows.length; i++){
+        totalPrice = totalPrice + parseInt(table.rows[i].cells[3].innerHTML)
+       }
+    totalPriceSection.innerHTML = totalPrice.toFixed(2)
 }
 
 
