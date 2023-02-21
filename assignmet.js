@@ -37,14 +37,14 @@ const handleOnClick = (product) => {
     let quantity = 1
     let total = parseInt(product.price) * parseInt(quantity)
     let totalPrice = 0.00
-    if (existingRow) {                                        // increasing the quantity of the existing product without adding it again
+    if (existingRow) {                                              // increasing the quantity of the existing product without adding it again
         const quantityCell = existingRow.querySelector('.quantity')
         const totalCell = existingRow.querySelector('.total-price')
         quantity = parseInt(quantityCell.innerHTML)
         quantity++;
-        quantityCell.innerHTML = quantity //updating quantity
+        quantityCell.innerHTML = quantity                        //updating quantity
         total = parseInt(product.price).toFixed(2) * quantity
-        totalCell.innerHTML = total.toFixed(2)    //updating total price of single product
+        totalCell.innerHTML = total.toFixed(2)                  //updating total price of single product
     } else {                                                   // adding a new row to the table 
         const row = table.insertRow()
         row.setAttribute('id', `${product.id}`)
