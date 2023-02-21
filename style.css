@@ -10,7 +10,7 @@
     justify-content: space-between;
 }
 
-td {
+th {
     background-color: rgb(9, 148, 255);
     color: white;
     padding-left: 20px;
@@ -20,15 +20,21 @@ td {
     text-align: center;
 }
 
-td img {
+th img {
     width: 30px;
 }
+
+#table {
+     text-align: center;
+}
+
 
 #table-container {
     display: flex;
     flex-direction: column;
     justify-items: center;
     align-items: center;
+    justify-content: space-between;
     position: relative;
     min-height: 500px;
     width: 49%;
@@ -39,15 +45,12 @@ td img {
 }
 
 #table-container section {
-    position: absolute;
-    bottom: 0%;
     margin: 10px;
 }
 
 #table-container section h4 {
     display: inline;
     text-align: center;
-    margin-left: 30px;
     margin-right: 30px;
     color: red;
 }
@@ -86,4 +89,13 @@ td img {
 
 .cloud-image {
     width: 60%;
+}
+
+.decrease {
+    cursor: pointer;
+}
+
+.dollar {
+    display: inline;
+    color: red;
 }
